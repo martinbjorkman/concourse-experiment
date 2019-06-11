@@ -1,0 +1,11 @@
+{
+    "projectId": "gatsby-poc",
+    "baseUrl": "http://localhost:9000",
+    "testFiles": "**/*.js",
+    "fixturesFolder": "test/e2e/fixtures",
+    "integrationFolder": "test/e2e/integration",
+    "pluginsFile": "test/e2e/plugins/index.js",
+    "supportFile": "test/e2e/support/index.js",
+    "screenshotsFolder": "reports/cypress/screenshots",
+    "videosFolder": "reports/cypress/videos"
+}

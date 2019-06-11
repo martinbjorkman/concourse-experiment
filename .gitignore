@@ -1,0 +1,22 @@
+# IDE
+.idea/
+
+# Generated directories
+dist
+reports
+.cache
+public
+
+# Node
+node_modules
+*.log*
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# VS code
+.vscode

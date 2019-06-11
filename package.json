@@ -1,0 +1,31 @@
+{
+  "name": "concourse-experiment",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Concourse Experiment",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "serve": "gatsby serve",
+    "test": "jest",
+    "test:e2e-open": "cypress open"
+  },
+  "dependencies": {
+    "gatsby": "2.8.7",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "babel-jest": "24.8.0",
+    "cypress": "3.3.1",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
+    "jest": "24.8.0",
+    "react-test-renderer": "16.8.6"
+  }
+}
