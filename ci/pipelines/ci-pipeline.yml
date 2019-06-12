@@ -44,22 +44,22 @@ jobs:
       - put: notify
         params:
           text: "Experiment failed dependency installation"
-  - task: unit-test
-    image: node-image
-    config:
-      inputs:
-      - name: project-source
-      platform: linux
-      run:
-        path: npm
-        args: ["test", "./project-source"]
-    on_success:
-      do:
-      - put: notify
-        params:
-          text: "Experiment passed unit tests"
-    on_failure:
-      do:
-      - put: notify
-        params:
-          text: "Experiment failed unit tests"
+  # - task: unit-test
+  #   image: node-image
+  #   config:
+  #     inputs:
+  #     - name: project-source
+  #     platform: linux
+  #     run:
+  #       path: npm
+  #       args: ["test", "./project-source"]
+  #   on_success:
+  #     do:
+  #     - put: notify
+  #       params:
+  #         text: "Experiment passed unit tests"
+  #   on_failure:
+  #     do:
+  #     - put: notify
+  #       params:
+  #         text: "Experiment failed unit tests"
