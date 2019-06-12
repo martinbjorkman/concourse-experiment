@@ -8,5 +8,4 @@ outputs:
 - name: project-with-dependencies
 
 run:
-  path: npm
-  args: ["install", "./project-source"]
+  path: project-source/ci/scripts/node-install.sh
