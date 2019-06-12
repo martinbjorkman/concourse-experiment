@@ -1,26 +1,46 @@
 ---
+resource_types:
+
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+
 resources:
-  - name: project-source
-    type: git
-    icon: github-circle
-    source:
-      uri: {{project-git-source}}
+- name: project-source
+  type: git
+  icon: github-circle
+  source:
+    uri: {{project-git-source}}
+
+- name: notify
+  type: slack-notification
+  source:
+    url: {{slack-web-hook}}
+
+- name: node-image
+  type: docker-image
+  source:
+    repository: node
+    tag: {{base-image-tag}}
 
 jobs:
-  - name: job
-    public: true
-    plan:
-      - get: project-source
-        trigger: true
-      - task: list-files
-        file: project-source/ci/tasks/node-install
-        on_success:
-          task: notify-slack
-          file: project-source/ci/tasks/notify-slack
-          params:
-            message: "Experiment passed first step"
-        on_failure:
-          task: notify-slack
-          file: project-source/ci/tasks/notify-slack
-          params:
-            message: "Experiment passed first step"
+- name: install-dependencies
+  plan:
+  - get: project-source
+    trigger: true
+  - get: node-image
+    params: {save: true}
+  - task: install
+    file: project-source/ci/tasks/node-install.yml
+    image: node-image
+    on_success:
+      do:
+      - put: notify
+        params:
+          text: "Experiment passed dependency installation"
+    on_failure:
+      do:
+      - put: notify
+        params:
+          text: "Experiment failed dependency installation"
