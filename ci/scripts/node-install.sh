@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
+cd project-source
 npm i
-mv -r project-source project-with-dependencies
+cd ..
+mv project-source project-with-dependencies
