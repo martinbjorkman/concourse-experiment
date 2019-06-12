@@ -5,7 +5,7 @@ inputs:
 - name: project-source
 
 outputs:
-- name: project-with-dependencies
+- name: project-source
 
 run:
   path: project-source/ci/scripts/node-install.sh
