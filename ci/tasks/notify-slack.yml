@@ -1,0 +1,19 @@
+---
+platform: linux
+
+resource_types:
+
+- name: slack-notification
+  type: docker-image
+  source:
+    repository: cfcommunity/slack-notification-resource
+
+resources:
+  - name: notify
+    type: slack-notification
+    source:
+      url: {{slack-web-hook}}
+
+- put: notify
+  params:
+    text: "{{message}}"

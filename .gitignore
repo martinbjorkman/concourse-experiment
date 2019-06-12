@@ -1,6 +1,9 @@
 # IDE
 .idea/
 
+# Config
+configuration.yml
+
 # Generated directories
 dist
 reports

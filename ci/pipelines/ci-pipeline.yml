@@ -1,25 +1,26 @@
 ---
 resources:
-  - name: concourse-experiment
+  - name: project-source
     type: git
     icon: github-circle
     source:
-      uri: https://github.com/martinbjorkman/concourse-experiment
+      uri: {{project-git-source}}
 
 jobs:
   - name: job
     public: true
     plan:
-      - get: concourse-experiment
+      - get: project-source
         trigger: true
       - task: list-files
-        config:
-          inputs:
-            - name: concourse-experiment
-          platform: linux
-          image_resource:
-            type: registry-image
-            source: { repository: busybox }
-          run:
-            path: ls
-            args: ["-la", "./concourse-experiment"]
+        file: project-source/ci/tasks/node-install
+        on_success:
+          task: notify-slack
+          file: project-source/ci/tasks/notify-slack
+          params:
+            message: "Experiment passed first step"
+        on_failure:
+          task: notify-slack
+          file: project-source/ci/tasks/notify-slack
+          params:
+            message: "Experiment passed first step"
