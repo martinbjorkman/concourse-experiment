@@ -17,6 +17,11 @@ resources:
   icon: docker
   source: { repository: node, tag: "10.16-alpine"}
 
+- name: cypress-image
+  type: registry-image
+  icon: docker
+  source: { repository: cypress/included, tag: "3.4.0"}
+
 jobs:
 - name: unit-test
   on_failure:
@@ -39,4 +44,26 @@ jobs:
     get_params: {list_changed_files: true}
   - task: node-test
     file: project-pr/ci/tasks/node-test.yml
+    input_mapping: {project: project-pr}
+- name: e2e-test
+  on_failure:
+    put: project-pr
+    inputs: [project-pr]
+    params: {path: project-pr, status: failure, context: e2e-test}
+  on_success:
+    put: project-pr
+    inputs: [project-pr]
+    params: {path: project-pr, status: success, context: e2e-test}
+  plan:
+  - in_parallel:
+    - get: project-pr
+      trigger: true
+      version: every
+    - get: cypress-image
+  - put: project-pr
+    inputs: [project-pr]
+    params: {path: project-pr, status: pending, context: e2e-test}
+    get_params: {list_changed_files: true}
+  - task: cypress-test
+    file: project-pr/ci/tasks/cypress-test.yml
     input_mapping: {project: project-pr}

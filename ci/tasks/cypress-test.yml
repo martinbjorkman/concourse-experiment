@@ -1,0 +1,12 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: cypress/included}
+
+inputs:
+- name: project
+
+run:
+  path: project/ci/tasks/scripts/cypress-test.sh
