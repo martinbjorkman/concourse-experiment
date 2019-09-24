@@ -12,4 +12,4 @@ caches:
 - path: project/node_modules
 
 run:
-  path: ci/task/scripts/node-test.sh
+  path: project/ci/tasks/scripts/node-test.sh
