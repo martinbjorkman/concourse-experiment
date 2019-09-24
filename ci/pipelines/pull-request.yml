@@ -38,5 +38,5 @@ jobs:
     params: {path: project-pr, status: pending, context: unit-test}
     get_params: {list_changed_files: true}
   - task: node-test
-    file: ci/tasks/node-test.yml
+    file: project-pr/ci/tasks/node-test.yml
     input_mapping: {project: project-pr}
