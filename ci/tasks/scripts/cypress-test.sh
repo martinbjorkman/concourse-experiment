@@ -4,5 +4,6 @@
 set -e -u
 
 pushd project
+    npm i
     cypress run
 popd
