@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: node}
+
+inputs:
+- name: project
+
+caches:
+- path: project/node_modules
+
+run:
+  path: project/ci/tasks/scripts/node-test.sh

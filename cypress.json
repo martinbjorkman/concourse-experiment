@@ -1,6 +1,5 @@
 {
     "projectId": "gatsby-poc",
-    "baseUrl": "http://localhost:9000",
     "testFiles": "**/*.js",
     "fixturesFolder": "test/e2e/fixtures",
     "integrationFolder": "test/e2e/integration",

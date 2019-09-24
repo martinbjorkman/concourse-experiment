@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: registry-image
+  source: {repository: cypress/included, tag: "3.4.0"}
+
+inputs:
+- name: project
+
+caches:
+- path: project/node_modules
+
+run:
+  path: project/ci/tasks/scripts/cypress-test.sh

@@ -10,6 +10,7 @@
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "test": "jest",
+    "test:e2e": "docker run -it -v $PWD:/e2e -w /e2e cypress/included:3.2.0",
     "test:e2e-open": "cypress open"
   },
   "dependencies": {
@@ -22,7 +23,6 @@
     "@babel/preset-env": "7.4.5",
     "@babel/preset-react": "7.0.0",
     "babel-jest": "24.8.0",
-    "cypress": "3.3.1",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "jest": "24.8.0",
